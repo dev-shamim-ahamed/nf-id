@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #666;
+      --secondary-color: #444;
+      --accent-color: #444;
+      --text-dark: #222;
+      --text-medium: #000;
+      --text-light: #666;
+      --bg-light: #f9f9f9;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+      font-family: 'Noto Sans Bengali', sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+      padding: 30px;
+      margin: 0;
+    }
+
+    .id-card {
+      width: 380px;
+      height: 570px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 0;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+      border: none;
+      margin: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .id-card:hover {
+      transform: translateY(-5px);
+    }
+
+     .id-card::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      left: 0;
+      width: 96%;
+      height: 130%;
+      background: url('nahid.jpg') no-repeat center center;
+      background-size: 480px;
+      opacity: 0.09; /* Watermark strength */
+      z-index: 0;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px 0 15px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      margin: 0 30px;
+      position: relative;
+    }
+
+    .logo-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .logo {
+      height: 44px;
+      width: 44px;
+      border-radius: 50%;
+    }
+
+    .company-name {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 0;
+      color: var(--primary-color);
+      letter-spacing: 0.1px;
+    }
+
+    .company-address {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-light);
+      margin: 5px 0 0;
+      line-height: 1;
+    }
+
+    .id-title {
+      font-size: 19px;
+      font-weight: 600;
+      margin-top: 12px;
+      color: var(--secondary-color);
+      position: relative;
+      display: inline-block;
+    }
+
+    .id-title::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background: var(--accent-color);
+    }
+
+    .photo-section {
+      display: flex;
+      justify-content: center;
+      margin: 15px 0;
+      position: relative;
+    }
+
+    .photo-frame {
+      width: 96px;
+      height: 96px;
+      border: 1px solid rgba(0,0,0,0.1);
+      padding: 4px;
+      border-radius: 4px 4px 0 0;
+      background: #fff;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .employee-id {
+      position: absolute;
+      bottom: -18px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      background: var(--primary-color);
+      color: white;
+      padding: 4px 0;
+      border-radius: 0 0 4px 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .details {
+      margin: 35px 30px;
+    }
+
+    .detail-row {
+      margin-bottom: 14px;
+      font-size: 15px;
+      line-height: 1.5;
+      display: flex;
+    }
+
+    .detail-title {
+      font-weight: 600;
+      display: inline-block;
+      width: 120px;
+      color: var(--text-medium);
+      min-width: 120px;
+    }
+
+    .detail-value {
+      font-weight: 500;
+      color: var(--text-dark);
+      flex-grow: 1;
+    }
+
+    .signature-section {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 30px 25px;
+      border-top: 1px dashed #aaa;
+      padding-top: 15px;
+    }
+
+    .signature {
+      text-align: center;
+      font-size: 13px;
+      width: 130px;
+      color: var(--text-medium);
+    }
+
+    .signature-line {
+      width: 100px;
+      height: 1px;
+      background: var(--text-dark);
+      margin: 25px auto 8px;
+      position: relative;
+    }
+
+    .signature-line::after {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--text-dark);
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-light);
+      padding: 10px 0;
+      background: var(--bg-light);
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    /* Back Side */
+    .back-header {
+      text-align: center;
+      padding: 25px 0 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      margin: 0 30px;
+      position: relative;
+    }
+
+    .back-header::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--secondary-color);
+    }
+
+    .back-section {
+      margin: 25px 30px;
+    }
+
+    .section-title {
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--primary-color);
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-color);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 30px;
+      height: 2px;
+      background: var(--secondary-color);
+    }
+
+    .back-detail {
+      font-size: 14px;
+      margin-bottom: 12px;
+      line-height: 1.6;
+      color: var(--text-medium);
+    }
+
+    .back-detail strong {
+      font-weight: 600;
+      color: var(--text-dark);
+      display: inline-block;
+      min-width: 120px;
+    }
+
+    .validity {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 30px 15px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-medium);
+      padding-top: 15px;
+      border-top: 1px dashed #aaa;
+    }
+
+    .validity strong {
+      color: var(--text-dark);
+    }
+
+   .qr-section {
+  position: absolute;
+  bottom: 40px;
+  right: 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px;
+  width: 320px;
+}
+
+
+.qr-code {
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 1px;
+}
+
+.qr-text {
+  font-size: 12px;
+  color: #000;
+  right: 8%;
+  max-width: 240px;
+}
+
+
+
+    /* Premium effects */
+    .id-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .id-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 80px;
+      height: 80px;
+      border-radius: 0 0 0 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FRONT SIDE -->
+  <div class="id-card">
+    <div class="header">
+      <div class="logo-title-row">
+        <img src="nahid.jpg" alt="logo" class="logo">
+        <div class="company-name">নাহিদ ফাইন টেক্সটাইল লিঃ</div>
+      </div>
+      <div class="company-address">হরিতলা, মাধবপুর, হবিগঞ্জ</div>
+      <div class="id-title">কর্মী পরিচয়পত্র</div>
+    </div>
+
+    <div class="photo-section">
+      <div class="photo-frame">
+        <img src="img.jpg" class="photo" alt="Employee Photo">
+        <div class="employee-id">এনএফ-০০২১৮৯</div>
+      </div>
+    </div>
+
+    <div class="details">
+      <div class="detail-row"><span class="detail-title">নাম:</span><span class="detail-value">রহিম উদ্দিন</span></div>
+      <div class="detail-row"><span class="detail-title">পদবী:</span><span class="detail-value">শিক্ষানবিশ (সুইং)</span></div>
+      <div class="detail-row"><span class="detail-title">বিভাগ/শাখা:</span><span class="detail-value">স্টিচিং</span></div>
+      <div class="detail-row"><span class="detail-title">কাজের ধরন:</span><span class="detail-value">স্টিচিং</span></div>
+    </div>
+
+    <div class="signature-section">
+      <div class="signature">
+        <div class="signature-line"></div>
+        শ্রমিকের স্বাক্ষর
+      </div>
+      <div class="signature">
+        <div class="signature-line"></div>
+        মালিক/ব্যবস্থাপক
+      </div>
+    </div>
+    
+    <div class="footer">কার্ড হারানো/চুরি হলে অবিলম্বে HR বিভাগে জানান | ফোন: ০১৭৭১-২৫১০৭২</div>
+  </div>
+
+  <!-- BACK SIDE -->
+  <div class="id-card">
+    <div class="back-header">
+      <div class="company-address">কর্মী তথ্যাবলী</div>
+    </div>
+
+    <div class="back-section">
+      <div class="section-title">ব্যক্তিগত তথ্য</div>
+      
+      <div class="back-detail"><strong>রক্তের গ্রুপ:</strong> ও+</div>
+      <div class="back-detail"><strong>যোগদানের তারিখ:</strong> ১২-০৫-১৯৮৫</div>
+      <div class="back-detail"><strong>জাতীয় ID:</strong> ১৯৮৫৬৭১৪২০০৩৪</div>
+      <div class="back-detail"><strong>জরুরী যোগাযোগ:</strong> ০১৬৯৮৭৬৫৪৩২</div>
+      <div class="back-detail"><strong>জারির তারিখ:</strong> ০১-০১-২০২৫</div>
+      <div class="back-detail"><strong>মেয়াদ উত্তীর্ণ:</strong> ৩১-১২-২০২৫</div>
+    </div>
+
+    <div class="back-section">
+      <div class="section-title">স্থায়ী ঠিকানা</div>
+      <div class="back-detail">গ্রাম: চরপাড়া, ডাকঘর: কাশিমপুর</div>
+      <div class="back-detail">উপজেলা: গাজীপুর সদর, জেলা: গাজীপুর</div>
+    </div>
+
+    <div class="qr-section">
+  <div class="qr-text">
+    উক্ত পরিচয়পত্র হারাইয়া গেলে তাৎক্ষনিক ব্যবস্থাপনা কর্তৃপক্ষকে জানাইতে হইবে।
+  </div>
+  <img src="qr.png" alt="QR Code" class="qr-code">
+</div>
+
+    <div class="footer">© ২০২৫ নাহিদ ফাইন টেক্সটাইল লিঃ | সকল অধিকার সংরক্ষিত</div>
+  </div>
+
+</body>
+</html>
